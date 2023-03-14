@@ -11,6 +11,9 @@ function updateClock() {
 //on load, call updateClock every 1000ms (1 second)
 window.onload = function() {
     setInterval(updateClock, 1000);
+    setInterval(getData, 1000);
+    //console log window size
+    console.log("window size: " + window.innerWidth + "x" + window.innerHeight);
     
     }
 
@@ -47,9 +50,10 @@ function dragElement(elmnt) {
         // set the element's new position:
         elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
         elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-        // update the p tag  inside this element with the new position
-        //elmnt.children[1].innerText = "top: " + (elmnt.offsetTop - pos2) + "px; left: " + (elmnt.offsetLeft - pos1) + "px;";
 
+
+        // =============================================================== update the p tag  inside this element with the new position
+        //elmnt.children[1].innerText = "top: " + (elmnt.offsetTop - pos2) + "px; left: " + (elmnt.offsetLeft - pos1) + "px;"; //uncomment this line to see the positions
     }
 
     function closeDragElement() {
@@ -65,9 +69,38 @@ function moveToPosition(elmId , top, left) {
 
 }
 
+
+//=========================================================================setup layout and make the divs draggable
+
 // make the div element draggable
 dragElement(document.getElementById("kristo"));
 dragElement(document.getElementById("Stats"));
+dragElement(document.getElementById("excuses"));
+dragElement(document.getElementById("contact"));
+
+
 // move the divs into the correct position
 moveToPosition("kristo", 64, 1258);
 moveToPosition("Stats", 167, 113);
+moveToPosition("excuses", 232, 640);
+moveToPosition("contact", 424, 113);
+
+
+
+
+
+//make jqeury call to get the data from the server
+function getData() {
+    $.getJSON("http://kristofer.is:13337/data", function(data) {
+        var items = [];
+        $.each(data, function(key, val) {
+            items.push("<li id='" + key + "'>" + val + "</li>");
+        });
+        //update the i tag called heartRate with the new value
+        $("#heartRate").html("BPM" + data.hr);
+        $("#steps").html("Steps " + data.walks);
+
+        
+    });
+}
+

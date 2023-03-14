@@ -1,4 +1,8 @@
 /* make divs in nav display next to eah other */
+
+a {
+    all: unset;
+}
 #nav{
     display: grid;
     grid-template-columns: 10% 10% 10% 65% auto;
@@ -31,6 +35,8 @@ body{
     background-color:rgb(51, 51, 51);
     margin: 0;
     font-family: "Lucida Console", "Courier New";
+    min-height: 937px;
+    min-width: 1920px;
 }
 #stats{
     padding: 1em;
