@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .navbar {
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+  }
+  
+  .navbar-item {
+    margin-left: 1em;
+    background-color: #f8f9fa;
+    color: #343a40;
+    font-weight: bold;
+    padding: 10px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-bottom: 2px solid #cfc;
+    position: relative; /* add position relative */
+    display: inline-block; /* add display inline-block */
+  }
+  
+  .navbar-item.active {
+    background-color: #007bff;
+    color: white;
+    border-bottom: none;
+  }
+  
+  .navbar-item:before { /* add pseudo-element to create the tab shape */
+    content: '';
+    position: absolute;
+    bottom: -1px; /* align to the bottom of the item */
+    left: 0;
+    width: 100%;
+    border-left: 1px solid #007bff; /* add left border to create left side of tab */
+    border-right: 1px solid #007bff; /* add right border to create right side of tab */
+    border-bottom: 1px solid #007bff; /* add bottom border to create bottom side of tab */
+    border-radius: 0 0 5px 5px; /* add border-radius to create rounded corners on bottom */
+  }
+  
+  
+  
+  .window {
+    position: absolute;
+    top: 50px;
+    left: 300px;
+    width: 300px;
+    height: 200px;
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .window-header {
+    background-color: #007bff;
+    color: white;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .window-header h2 {
+    margin: 0;
+  }
+  
+  .close-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .window-content {
+    padding: 10px;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .navbar {
+      justify-content: center;
+      align-items: center;
+      height: 70
+    }}
+  
